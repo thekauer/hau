@@ -18,6 +18,7 @@ public:
 	Pos get_player_local_pos(DWORD dwPlayer);
 	std::wstring get_player_name(DWORD dwPlayer);
 	std::wstring get_playerinfo_name(DWORD dwPlayerInfo);
+	void set_playerinfo_name(DWORD dwPlayerInfo, std::wstring name);
 	void set_player_pos(DWORD dwPlayer, const Pos& p);
 	void freez_kill_timer(DWORD dwPlayer);
 	void print_all_player_pos();

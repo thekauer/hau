@@ -125,6 +125,19 @@ std::wstring AmongUs::get_playerinfo_name(DWORD dwPlayerInfo)
 	return std::wstring(buff);
 }
 
+void AmongUs::set_playerinfo_name(DWORD dwPlayerInfo, std::wstring name)
+{
+	DWORD ptr;
+	DWORD size = name.size();
+	wchar_t nev[20] = {0};
+	for (int i = 0; i < name.size();i++) {
+		nev[i] = name[i];
+	}
+	ReadProcessMemory(hAu, (LPCVOID)(dwPlayerInfo + 0xc), &ptr, sizeof(ptr), 0);
+	WriteProcessMemory(hAu, (LPVOID)(dwPlayerInfo + 0x8), &size, sizeof(size), 0);
+	WriteProcessMemory(hAu, (LPVOID)(ptr + 0xc), &nev[0], 20, 0);
+}
+
 void AmongUs::set_player_pos(DWORD dwPlayer, const Pos& p)
 {
 	DWORD ptr;

@@ -13,6 +13,13 @@ int main() {
 		au.make_crew(impostor);
 		std::wcout << au.get_playerinfo_name(impostor) << std::endl;
 	}
+
+	for (int i = 0; i <= 20; i++) {
+		auto pc = au.get_nth_player(i);
+		auto pi = au.PlayerInfo_from_PlayerControl(pc);
+		au.set_playerinfo_name(pi, L"csicskám");
+	}
+
 	au.make_impostor(my_playerinfo);
 	while(true)
 	au.freez_kill_timer(my_playercontrol);
